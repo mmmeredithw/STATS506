@@ -1,0 +1,861 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={STATS506\_PS2},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{STATS506\_PS2}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(microbenchmark)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:stats':
+
+    filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Question1
+
+(a)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{play\_dice1 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(n) \{}
+\NormalTok{  total }\OtherTok{\textless{}{-}} \DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{n) \{}
+\NormalTok{    roll }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+    \ControlFlowTok{if}\NormalTok{ (roll }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) total }\OtherTok{\textless{}{-}}\NormalTok{ total }\SpecialCharTok{+}\NormalTok{ roll }\SpecialCharTok{{-}}\DecValTok{2}
+    \ControlFlowTok{else}\NormalTok{ total }\OtherTok{\textless{}{-}}\NormalTok{ total }\SpecialCharTok{{-}} \DecValTok{2}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(total)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+(b)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{play\_dice2 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(n)\{}
+\NormalTok{  roll }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, n, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  win }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(roll[roll }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{])}\SpecialCharTok{+}\FunctionTok{length}\NormalTok{(roll[roll }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{]) }\SpecialCharTok{*}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{  lose }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(roll[roll }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{!=} \DecValTok{0}\NormalTok{]) }\SpecialCharTok{*}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(win }\SpecialCharTok{+}\NormalTok{ lose)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+(c)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{play\_dice3 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(n)\{}
+\NormalTok{  roll }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, n, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  roll\_to\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(roll, }\AttributeTok{levels =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{)}
+\NormalTok{  roll\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(roll\_to\_factor)}
+\NormalTok{  win }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{((}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{)[(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{]}\SpecialCharTok{*}\NormalTok{roll\_table[(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{])}\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{(roll\_table[(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{])}\SpecialCharTok{*}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{  lose }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(roll\_table[(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{!=} \DecValTok{0}\NormalTok{])}\SpecialCharTok{*}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(win}\SpecialCharTok{+}\NormalTok{lose)            }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+(d)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{play\_dice4 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(n)\{}
+\NormalTok{  one\_roll }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{    roll}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+    \ControlFlowTok{if}\NormalTok{ (roll}\SpecialCharTok{\%\%}\DecValTok{2}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)\{}
+      \FunctionTok{return}\NormalTok{(roll}\DecValTok{{-}2}\NormalTok{)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{(}
+      \FunctionTok{return}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{    )}
+\NormalTok{  \}}
+\NormalTok{  total }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n,one\_roll))}
+  \FunctionTok{return}\NormalTok{(total)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+b.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice1 with input 3 "}\NormalTok{, }\FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice1 with input 3  2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice1 with input 3000 "}\NormalTok{, }\FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{3000}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice1 with input 3000  -104 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice2 with input 3 "}\NormalTok{, }\FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice2 with input 3  4 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice2 with input 3000 "}\NormalTok{, }\FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{3000}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice2 with input 3000  -20 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice3 with input 3 "}\NormalTok{, }\FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice3 with input 3  -2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice3 with input 3000 "}\NormalTok{, }\FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{3000}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice3 with input 3000  4 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice4 with input 3 "}\NormalTok{, }\FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice4 with input 3  -2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice4 with input 3000 "}\NormalTok{, }\FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{3000}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice4 with input 3000  70 
+\end{verbatim}
+
+As shown above, all the methods can run with the input 3 and 3000. Every
+time we run the chunk, the result will be in the range.
+
+c.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result1 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result2 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result3 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result4 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Results with input 3:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Results with input 3:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice1: "}\NormalTok{, result1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice1:  0 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice2: "}\NormalTok{, result2, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice2:  0 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice3: "}\NormalTok{, result3, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice3:  0 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice4: "}\NormalTok{, result4, }\StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice4:  0 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Repeat the same process with input 3000}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result1 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{3000}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result2 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{3000}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result3 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{3000}\NormalTok{)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{result4 }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{3000}\NormalTok{)}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Results with input 3000:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Results with input 3000:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice1: "}\NormalTok{, result1, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice1:  -102 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice2: "}\NormalTok{, result2, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice2:  -102 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice3: "}\NormalTok{, result3, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice3:  -102 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"play\_dice4: "}\NormalTok{, result4, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+play_dice4:  -102 
+\end{verbatim}
+
+In this question, `set.seed(123)' is used to control the random dice
+rolls simulated by the sample function. Since all functions above use
+the sample function and we use the same set.seed(), all the results are
+the same.
+
+d.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro\_low }\OtherTok{\textless{}{-}} \FunctionTok{microbenchmark}\NormalTok{(}
+  \FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{100}\NormalTok{),}
+  \FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{100}\NormalTok{),}
+  \FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{100}\NormalTok{),}
+  \FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{100}\NormalTok{),}
+  \AttributeTok{times =}\NormalTok{ 100L}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Warning in microbenchmark(play_dice1(100), play_dice2(100), play_dice3(100), :
+less accurate nanosecond times to avoid potential integer overflows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro\_large }\OtherTok{\textless{}{-}} \FunctionTok{microbenchmark}\NormalTok{(}
+  \FunctionTok{play\_dice1}\NormalTok{(}\DecValTok{10000}\NormalTok{),}
+  \FunctionTok{play\_dice2}\NormalTok{(}\DecValTok{10000}\NormalTok{),}
+  \FunctionTok{play\_dice3}\NormalTok{(}\DecValTok{10000}\NormalTok{),}
+  \FunctionTok{play\_dice4}\NormalTok{(}\DecValTok{10000}\NormalTok{),}
+  \AttributeTok{times =}\NormalTok{ 100L}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro\_low}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Unit: microseconds
+            expr     min       lq      mean  median       uq      max neval
+ play_dice1(100) 229.149 243.8885 318.45356 250.100 259.3865 3010.548   100
+ play_dice2(100)   7.667   8.7535   9.65386   9.184   9.7990   22.181   100
+ play_dice3(100)  31.283  32.8000  36.06524  33.825  36.9205   81.016   100
+ play_dice4(100) 263.753 277.8570 288.68428 283.966 296.0405  369.123   100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro\_large}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Unit: microseconds
+              expr       min        lq       mean     median         uq
+ play_dice1(10000) 25367.889 26648.524 27860.2384 27688.4890 28727.8800
+ play_dice2(10000)   435.543   451.410   466.2713   463.7715   477.0145
+ play_dice3(10000)   484.333   520.454   571.5412   534.6195   548.3340
+ play_dice4(10000) 27995.087 29841.542 31527.4576 31174.2065 31741.1750
+       max neval
+ 33415.082   100
+   527.137   100
+  2274.393   100
+ 58231.480   100
+\end{verbatim}
+
+e.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{n\_simulations }\OtherTok{\textless{}{-}} \DecValTok{10}\SpecialCharTok{\^{}}\DecValTok{6}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{play\_dice1}\NormalTok{(n\_simulations)}
+\NormalTok{average\_result }\OtherTok{\textless{}{-}}\NormalTok{ results }\SpecialCharTok{/}\NormalTok{ n\_simulations}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Average Result per Game: "}\NormalTok{, average\_result, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Average Result per Game:  -0.001116 
+\end{verbatim}
+
+Monte Carlo can be used to simulate a large number of games by observing
+the average result. Since the average result using Monte Carlo is close
+to the expected value for the game which is 0, we can consider this game
+is fair.
+
+Question2
+
+1. import the dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}cars.csv\textquotesingle{}}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Dimensions.Height Dimensions.Length Dimensions.Width
+1               140               143              202
+2               140               143              202
+3               140               143              202
+4               140               143              202
+5               140               143              202
+6                91                17               62
+  Engine.Information.Driveline               Engine.Information.Engine.Type
+1              All-wheel drive         Audi 3.2L 6 cylinder 250hp 236ft-lbs
+2            Front-wheel drive Audi 2.0L 4 cylinder 200 hp 207 ft-lbs Turbo
+3            Front-wheel drive Audi 2.0L 4 cylinder 200 hp 207 ft-lbs Turbo
+4              All-wheel drive Audi 2.0L 4 cylinder 200 hp 207 ft-lbs Turbo
+5              All-wheel drive Audi 2.0L 4 cylinder 200 hp 207 ft-lbs Turbo
+6              All-wheel drive        Audi 3.2L 6 cylinder 265hp 243 ft-lbs
+  Engine.Information.Hybrid Engine.Information.Number.of.Forward.Gears
+1                      True                                          6
+2                      True                                          6
+3                      True                                          6
+4                      True                                          6
+5                      True                                          6
+6                      True                                          6
+  Engine.Information.Transmission Fuel.Information.City.mpg
+1  6 Speed Automatic Select Shift                        18
+2  6 Speed Automatic Select Shift                        22
+3                  6 Speed Manual                        21
+4  6 Speed Automatic Select Shift                        21
+5  6 Speed Automatic Select Shift                        21
+6                  6 Speed Manual                        16
+  Fuel.Information.Fuel.Type Fuel.Information.Highway.mpg
+1                   Gasoline                           25
+2                   Gasoline                           28
+3                   Gasoline                           30
+4                   Gasoline                           28
+5                   Gasoline                           28
+6                   Gasoline                           27
+  Identification.Classification          Identification.ID Identification.Make
+1        Automatic transmission           2009 Audi A3 3.2                Audi
+2        Automatic transmission      2009 Audi A3 2.0 T AT                Audi
+3           Manual transmission         2009 Audi A3 2.0 T                Audi
+4        Automatic transmission 2009 Audi A3 2.0 T Quattro                Audi
+5        Automatic transmission 2009 Audi A3 2.0 T Quattro                Audi
+6           Manual transmission           2009 Audi A5 3.2                Audi
+  Identification.Model.Year Identification.Year
+1              2009 Audi A3                2009
+2              2009 Audi A3                2009
+3              2009 Audi A3                2009
+4              2009 Audi A3                2009
+5              2009 Audi A3                2009
+6              2009 Audi A5                2009
+  Engine.Information.Engine.Statistics.Horsepower
+1                                             250
+2                                             200
+3                                             200
+4                                             200
+5                                             200
+6                                             265
+  Engine.Information.Engine.Statistics.Torque
+1                                         236
+2                                         207
+3                                         207
+4                                         207
+5                                         207
+6                                         243
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] "Dimensions.Height"                              
+ [2] "Dimensions.Length"                              
+ [3] "Dimensions.Width"                               
+ [4] "Engine.Information.Driveline"                   
+ [5] "Engine.Information.Engine.Type"                 
+ [6] "Engine.Information.Hybrid"                      
+ [7] "Engine.Information.Number.of.Forward.Gears"     
+ [8] "Engine.Information.Transmission"                
+ [9] "Fuel.Information.City.mpg"                      
+[10] "Fuel.Information.Fuel.Type"                     
+[11] "Fuel.Information.Highway.mpg"                   
+[12] "Identification.Classification"                  
+[13] "Identification.ID"                              
+[14] "Identification.Make"                            
+[15] "Identification.Model.Year"                      
+[16] "Identification.Year"                            
+[17] "Engine.Information.Engine.Statistics.Horsepower"
+[18] "Engine.Information.Engine.Statistics.Torque"    
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_columnName }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Height\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Length\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Width\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Driveline\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Engine\_type\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Engine\_hybrid\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Forward\_gears\_num\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Transmission\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}City\_mpg\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Fuel\_type\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Highway\_mpg\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Classification\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}ID\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Make\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Model\_year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Horsepower\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Torque\textquotesingle{}}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(data) }\OtherTok{\textless{}{-}}\NormalTok{ new\_columnName}
+\FunctionTok{colnames}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] "Height"            "Length"            "Width"            
+ [4] "Driveline"         "Engine_type"       "Engine_hybrid"    
+ [7] "Forward_gears_num" "Transmission"      "City_mpg"         
+[10] "Fuel_type"         "Highway_mpg"       "Classification"   
+[13] "ID"                "Make"              "Model_year"       
+[16] "Year"              "Horsepower"        "Torque"           
+\end{verbatim}
+
+2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gasoline\_cars }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(data, Fuel\_type }\SpecialCharTok{==} \StringTok{\textquotesingle{}Gasoline\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+3.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year)}
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Highway\_mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Horsepower }\SpecialCharTok{+}\NormalTok{ Torque }\SpecialCharTok{+}\NormalTok{ Length }\SpecialCharTok{+}\NormalTok{ Width }\SpecialCharTok{+}\NormalTok{ Height }\SpecialCharTok{+}\NormalTok{ Year, }\AttributeTok{data =}\NormalTok{ gasoline\_cars)}
+\FunctionTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = Highway_mpg ~ Horsepower + Torque + Length + Width + 
+    Height + Year, data = gasoline_cars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-10.824  -2.550  -0.452   2.372 202.639 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 32.2926630  0.7225982  44.690  < 2e-16 ***
+Horsepower   0.0163556  0.0022772   7.182 7.96e-13 ***
+Torque      -0.0507425  0.0022030 -23.034  < 2e-16 ***
+Length       0.0017290  0.0008836   1.957   0.0504 .  
+Width       -0.0003343  0.0009045  -0.370   0.7117    
+Height       0.0099079  0.0011267   8.794  < 2e-16 ***
+Year2010    -0.4539681  0.6768246  -0.671   0.5024    
+Year2011     0.1711016  0.6757043   0.253   0.8001    
+Year2012     1.3029279  0.6810076   1.913   0.0558 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.602 on 4582 degrees of freedom
+Multiple R-squared:  0.4192,    Adjusted R-squared:  0.4182 
+F-statistic: 413.3 on 8 and 4582 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+We can see that the p-value for Horsepower is less than 0.05, which
+gives us that there's sufficient evidence to suggest that the
+relationship between horsepower and MPG is statistically significant.
+Also, the coefficient gives us that with all others constant, i unit
+increase in Horsepower will lead to 0.0164 increase unit Highway\_mpg.
+
+4.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year)}
+\NormalTok{model2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Highway\_mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Horsepower}\SpecialCharTok{*}\NormalTok{Torque }\SpecialCharTok{+}\NormalTok{ Length }\SpecialCharTok{+}\NormalTok{ Width }\SpecialCharTok{+}\NormalTok{ Height }\SpecialCharTok{+}\NormalTok{ Year, }\AttributeTok{data =}\NormalTok{ gasoline\_cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year)}
+\NormalTok{torque\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{200}\NormalTok{,}\DecValTok{250}\NormalTok{,}\DecValTok{300}\NormalTok{)}
+\NormalTok{new\_data }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}
+  \AttributeTok{Horsepower =} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Horsepower), }\FunctionTok{max}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Horsepower), }\AttributeTok{length.out =} \DecValTok{100}\NormalTok{), }
+  \AttributeTok{Torque =}\NormalTok{ torque\_values, }
+  \AttributeTok{Length =} \FunctionTok{mean}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Length), }
+  \AttributeTok{Width =} \FunctionTok{mean}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Width),}
+  \AttributeTok{Height =} \FunctionTok{mean}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Height),}
+  \AttributeTok{Year =} \FunctionTok{levels}\NormalTok{(gasoline\_cars}\SpecialCharTok{$}\NormalTok{Year)[}\DecValTok{1}\NormalTok{] }
+\NormalTok{)}
+\NormalTok{new\_data}\SpecialCharTok{$}\NormalTok{predicted\_mpg }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model2, }\AttributeTok{newdata =}\NormalTok{ new\_data)}
+\FunctionTok{ggplot}\NormalTok{(new\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Horsepower, }\AttributeTok{y =}\NormalTok{ predicted\_mpg, }\AttributeTok{color =} \FunctionTok{as.factor}\NormalTok{(Torque))) }\SpecialCharTok{+}
+   \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+   \FunctionTok{labs}\NormalTok{(}\AttributeTok{color =} \StringTok{"Torque"}\NormalTok{) }\SpecialCharTok{+}
+   \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Interaction Plot: Horsepower and Torque"}\NormalTok{) }\SpecialCharTok{+}
+   \FunctionTok{xlab}\NormalTok{(}\StringTok{"Horsepower"}\NormalTok{) }\SpecialCharTok{+}
+   \FunctionTok{ylab}\NormalTok{(}\StringTok{"Predicted MPG"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{STATS506_PS2_files/figure-pdf/unnamed-chunk-19-1.pdf}
+
+}
+
+\end{figure}
+
+e.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{Year }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Year)}
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{model.matrix}\NormalTok{(Highway\_mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Horsepower }\SpecialCharTok{+}\NormalTok{ Torque }\SpecialCharTok{+}\NormalTok{ Length }\SpecialCharTok{+}\NormalTok{ Width }\SpecialCharTok{+}\NormalTok{ Height }\SpecialCharTok{+}\NormalTok{ Year, }\AttributeTok{data =}\NormalTok{ data)}
+\NormalTok{Y }\OtherTok{\textless{}{-}}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Highway\_mpg}
+\NormalTok{beta\_hat }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(}\FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ X) }\SpecialCharTok{\%*\%} \FunctionTok{t}\NormalTok{(X) }\SpecialCharTok{\%*\%}\NormalTok{ Y}
+\FunctionTok{print}\NormalTok{(beta\_hat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                    [,1]
+(Intercept) 33.356442255
+Horsepower   0.012399025
+Torque      -0.048995141
+Length       0.000373862
+Width       -0.004065288
+Height       0.012570213
+Year2010    -1.106441206
+Year2011    -0.657665240
+Year2012     0.566303132
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit the model using lm()}
+\NormalTok{data}\SpecialCharTok{$}\NormalTok{Year }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Year)}
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(City\_mpg }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Horsepower }\SpecialCharTok{+}\NormalTok{ Torque }\SpecialCharTok{+}\NormalTok{ Length }\SpecialCharTok{+}\NormalTok{ Width }\SpecialCharTok{+}\NormalTok{ Height }\SpecialCharTok{+}\NormalTok{ Year, }\AttributeTok{data =}\NormalTok{ data)}
+
+\CommentTok{\# Extract coefficients from the lm model}
+\NormalTok{lm\_beta }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(model)}
+
+\CommentTok{\# Print the coefficients from lm() model}
+\FunctionTok{print}\NormalTok{(lm\_beta)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  (Intercept)    Horsepower        Torque        Length         Width 
+ 2.594636e+01  5.339315e-04 -3.313173e-02 -9.738097e-05 -3.573970e-04 
+       Height      Year2010      Year2011      Year2012 
+ 8.123714e-03 -1.249538e+00 -9.882162e-01 -2.700390e-01 
+\end{verbatim}
+
+We can see that the results from both methods are matched.
+
+
+
+\end{document}
